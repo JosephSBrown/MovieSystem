@@ -21,6 +21,16 @@
             chart[8][4] = false;
             chart[8][3] = false;
             chart[8][2] = false;
+            chart[7][4] = false;
+            chart[7][1] = false;
+            chart[7][0] = false;
+            chart[6][4] = false;
+            chart[6][3] = false;
+            chart[5][1] = false;
+            chart[5][0] = false;
+            chart[4][5] = false;
+            chart[4][4] = false;
+            chart[4][3] = false;
         }
     }
 }

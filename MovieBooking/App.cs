@@ -11,6 +11,8 @@ namespace MovieBooking
 
         public void Run()
         {
+            Console.Title = "G&M Movie Bookings";
+
             Loading();
             TitleMenu();
         }
@@ -296,8 +298,23 @@ namespace MovieBooking
                 foreach (var seat in row)
                 {
                     char status = seat ? 'O' : 'X';
-                    Console.Write(status + " ");
+                    if (status == 'O')
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.Write(status + " ");
+                    }
+                    else if (status == 'X')
+                    { 
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.Write(status + " ");
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    
                 }
+                Console.ForegroundColor= ConsoleColor.White;
                 Console.WriteLine();
             }
         }
