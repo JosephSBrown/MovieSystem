@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MovieBooking
+﻿namespace MovieBooking
 {
     class FastAndFurious : Movie
     {
         public FastAndFurious()
         {
             Title = "Fast And Furious: Tokyo Drift";
-            AgeRating = 15;
+            AgeRating = 13;
             AudienceRating = 84;
-            Description = "";
+            Description = "In order to avoid jail time, an errant car racer is sent to live with his father in Tokyo. However, he finds himself in trouble once again when he becomes a major competitor in drifting.";
         }
 
         public override void takenSeats(List<List<bool>> chart)

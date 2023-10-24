@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MovieBooking
+﻿namespace MovieBooking
 {
     class Program
     { 
