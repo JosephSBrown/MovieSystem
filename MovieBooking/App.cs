@@ -71,6 +71,8 @@ namespace MovieBooking
             Console.WriteLine("");
             string info = "Use The Arrow Keys To Navigate the Menu";
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (info.Length / 2)) + "}", info));
+            string info2 = "Use The Enter Key To Confirm a Choice";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (info2.Length / 2)) + "}", info2));
             Console.WriteLine(" ");
 
             foreach (MenuOption o in options)
