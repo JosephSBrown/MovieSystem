@@ -1,0 +1,15 @@
+D:\VS Projects\MovieBooking\MovieBooking\obj\Debug\net6.0\MovieBooking.csproj.AssemblyReference.cache
+D:\VS Projects\MovieBooking\MovieBooking\obj\Debug\net6.0\MovieBooking.GeneratedMSBuildEditorConfig.editorconfig
+D:\VS Projects\MovieBooking\MovieBooking\obj\Debug\net6.0\MovieBooking.AssemblyInfoInputs.cache
+D:\VS Projects\MovieBooking\MovieBooking\obj\Debug\net6.0\MovieBooking.AssemblyInfo.cs
+D:\VS Projects\MovieBooking\MovieBooking\obj\Debug\net6.0\MovieBooking.csproj.CoreCompileInputs.cache
+D:\VS Projects\MovieBooking\MovieBooking\bin\Debug\net6.0\MovieBooking.exe
+D:\VS Projects\MovieBooking\MovieBooking\bin\Debug\net6.0\MovieBooking.deps.json
+D:\VS Projects\MovieBooking\MovieBooking\bin\Debug\net6.0\MovieBooking.runtimeconfig.json
+D:\VS Projects\MovieBooking\MovieBooking\bin\Debug\net6.0\MovieBooking.dll
+D:\VS Projects\MovieBooking\MovieBooking\bin\Debug\net6.0\MovieBooking.pdb
+D:\VS Projects\MovieBooking\MovieBooking\obj\Debug\net6.0\MovieBooking.dll
+D:\VS Projects\MovieBooking\MovieBooking\obj\Debug\net6.0\refint\MovieBooking.dll
+D:\VS Projects\MovieBooking\MovieBooking\obj\Debug\net6.0\MovieBooking.pdb
+D:\VS Projects\MovieBooking\MovieBooking\obj\Debug\net6.0\MovieBooking.genruntimeconfig.cache
+D:\VS Projects\MovieBooking\MovieBooking\obj\Debug\net6.0\ref\MovieBooking.dll
