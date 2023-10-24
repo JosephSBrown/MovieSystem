@@ -101,6 +101,9 @@ namespace MovieBooking
 
             TextDisplay.MovieChoiceText();
             Console.WriteLine("");
+            string info = "Press Backspace to Return to the Title Screen...";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (info.Length / 2)) + "}", info));
+            Console.WriteLine("");
             Console.WriteLine("");
 
             foreach (Movie o in options)
@@ -161,6 +164,10 @@ namespace MovieBooking
                 else if (key.Key == ConsoleKey.Enter)      
                 {
                     BookTickets();                                 
+                }
+                else if (key.Key == ConsoleKey.Backspace)
+                {
+                    TitleMenu();
                 }
             }
             while (key.Key != ConsoleKey.Escape);
@@ -226,6 +233,14 @@ namespace MovieBooking
             {
                 Console.WriteLine("No Avaiable Seats Left for Quantity...");
             }
+
+            Console.WriteLine(" ");
+            Console.WriteLine("You'll Be Redirected Back to the Movies in 5 Seconds");
+            Console.WriteLine("");
+
+            Thread.Sleep(5000);
+            ViewMovies();
+
         }
 
         static List<List<bool>> CreateSeating(int numRows, int numSeats)
@@ -242,7 +257,7 @@ namespace MovieBooking
                 createChart.Add(rowList);
             }
 
-            //Declare Taken Seats
+            //Declare Taken Seats using Movie Method Based on Selected Movie through Index
             movies[movieIndex].takenSeats(createChart);
 
             return createChart;
