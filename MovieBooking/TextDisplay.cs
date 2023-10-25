@@ -2,6 +2,7 @@
 {
     class TextDisplay
     {
+        //Create Title Screen  ASCII Art
         public static void HomeScreenText()
         {
             string one =   @$"   _________     __  ___   __  ___           _          ";
@@ -17,6 +18,7 @@
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (five.Length / 2)) + "}", five));
         }
 
+        //Create Movie Selection ASCII Art
         public static void MovieChoiceText()
         {
             string one =   @$"  ________                                       __  ___          _    ";
@@ -32,6 +34,7 @@
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (five.Length / 2)) + "}", five));
         }
 
+        //Create Seating Choice ASCII Art
         public static void SeatingText()
         {
             string one =   @$"   _____            __   _            ";

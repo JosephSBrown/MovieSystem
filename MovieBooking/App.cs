@@ -6,12 +6,12 @@ namespace MovieBooking
 {
     class App
     {
-        public static int movieIndex = 0;
-        public static List<Movie> movies = GetClassType<Movie>();
+        public static int movieIndex = 0;   //Sets an Index for Navigating through the Movie List
+        public static List<Movie> movies = GetClassType<Movie>(); //Creates Movie Object List By Classes that have inherited from Movie
 
         public void Run()
         {
-            Console.Title = "G&M Movie Bookings";
+            Console.Title = "G&M Movie Bookings"; //Sets Console Title
 
             Loading();
             TitleMenu();
@@ -19,7 +19,7 @@ namespace MovieBooking
 
         public static void TitleMenu()
         {
-            int index = 0;
+            int index = 0; //Menu Index for Navigating
 
             List<MenuOption> options = new List<MenuOption>()
             {
@@ -29,6 +29,7 @@ namespace MovieBooking
 
             createMenu(options, options[index]); 
 
+            //Do-While for creating a navigatable menu using Key Presses
             ConsoleKeyInfo key;
 
             do
@@ -197,64 +198,75 @@ namespace MovieBooking
             Console.WriteLine(" ");
 
             Console.Write("How Many Tickets Would You Like To Book? ");
-            int seatsRequested = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
-            Console.WriteLine("Searching For " + seatsRequested + " Tickets...");
-            Thread.Sleep(1000);
-            Console.Clear();
+            string seatsRequested = Console.ReadLine();
 
-            List<SeatLocation> bestSeats = BestSeats(seatingChart, seatsRequested);
-
-            if (bestSeats.Count == seatsRequested)
+            //Try Parse to Ensure that if the input is a letter or empty that it doesn't cause an error
+            if (int.TryParse(seatsRequested, out int ticketsRequested))
             {
-                foreach (var seat in bestSeats)
+                Console.Clear();
+                Console.WriteLine("Searching For " + ticketsRequested + " Tickets...");
+                Thread.Sleep(1000);
+                Console.Clear();
+
+                List<SeatLocation> bestSeats = BestSeats(seatingChart, ticketsRequested);
+
+                if (bestSeats.Count == ticketsRequested)
                 {
-                    seatingChart[seat.Row][seat.Seat] = false;
+                    foreach (var seat in bestSeats)
+                    {
+                        seatingChart[seat.Row][seat.Seat] = false;  //Reserve Seats by Making them a False Bool if there is enough Seats alongside one another
+                    }
+
+                    Console.WriteLine("Best Seats for Quantity have been Selected...");
+
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+
+                    DrawSeating(seatingChart);
+
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+
+                    Console.WriteLine("Chosen Seating:");
+                    foreach (var seat in bestSeats)
+                    {
+                        Console.WriteLine("Row: " + (seat.Row + 1) + " Seat: " + (seat.Seat + 1));
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("No Avaiable Seats Together Left for this Quantity...");
                 }
 
-                Console.WriteLine("Best Seats for Quantity have been Selected...");
-
                 Console.WriteLine(" ");
-                Console.WriteLine(" ");
+                Console.WriteLine("You'll Be Redirected Back to the Movies in 5 Seconds");
+                Console.WriteLine("");
 
-                DrawSeating(seatingChart);
-
-                Console.WriteLine(" ");
-                Console.WriteLine(" ");
-
-                Console.WriteLine("Chosen Seating:");
-                foreach (var seat in bestSeats)
-                {
-                    Console.WriteLine("Row: " + (seat.Row + 1) + " Seat: " + (seat.Seat + 1));
-                }
-                
+                Thread.Sleep(5000);
+                ViewMovies();
             }
             else
             {
-                Console.WriteLine("No Avaiable Seats Left for Quantity...");
+                Console.WriteLine("Invalid Input, Please Try Again");
+                Thread.Sleep(3000);
+                BookTickets();
             }
-
-            Console.WriteLine(" ");
-            Console.WriteLine("You'll Be Redirected Back to the Movies in 5 Seconds");
-            Console.WriteLine("");
-
-            Thread.Sleep(5000);
-            ViewMovies();
 
         }
 
         static List<List<bool>> CreateSeating(int numRows, int numSeats)
         {
-            List<List<bool>> createChart = new List<List<bool>>();
+            List<List<bool>> createChart = new List<List<bool>>(); //Create the Seating Chart in a List
 
             for (int rows = 0; rows < numRows; rows++)
             { 
-                List<bool> rowList = new List<bool>();
+                List<bool> rowList = new List<bool>();              //Create a List of Rows
                 for (int seats = 0; seats < numSeats; seats++)
                 { 
-                    rowList.Add(true);
+                    rowList.Add(true);              //Add All Seats as True (Available) to the List of Rows
                 }
-                createChart.Add(rowList);
+                createChart.Add(rowList);       //Add Each List of Rows for the Number of Rows to the Seating Chart
             }
 
             //Declare Taken Seats using Movie Method Based on Selected Movie through Index
@@ -314,15 +326,15 @@ namespace MovieBooking
             {
                 foreach (var seat in row)
                 {
-                    char status = seat ? 'O' : 'X';
+                    char status = seat ? 'O' : 'X';     //Convert Boolean True or False to an X or O to show availability.
                     if (status == 'O')
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;   //If Char is O Make Text Green to Show Availability
                         Console.Write(status + " ");
                     }
                     else if (status == 'X')
                     { 
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.ForegroundColor = ConsoleColor.DarkRed;     //If Char is X Make Text Red to Show Reservation
                         Console.Write(status + " ");
                     }
                     else
@@ -331,7 +343,7 @@ namespace MovieBooking
                     }
                     
                 }
-                Console.ForegroundColor= ConsoleColor.White;
+                Console.ForegroundColor= ConsoleColor.White;    //Ensure beyond the Seating Chart the Console goes back to Regular Font Colour
                 Console.WriteLine();
             }
         }
@@ -339,7 +351,7 @@ namespace MovieBooking
         //Method for getting a Class Type for Adding it to Lists
         public static List<T> GetClassType<T>() where T : class
         {
-            List<T> types = new List<T>();  //Initialise New List of Classes That Are Derivatives of List Parameter T
+            List<T> types = new List<T>();  //Initialise New List of Classes That Are Derivatives of List Parameter Type Class
             foreach (Type type in Assembly.GetAssembly(typeof(T)).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(T))))
             {
                 types.Add((T)Activator.CreateInstance(type));
@@ -357,6 +369,8 @@ namespace MovieBooking
             return convertedWord;
         }
 
+
+        //Loading for Start, no necessary function other than aesthetics
         static void Loading()
         {
             Console.Write("System Loading");
@@ -370,6 +384,7 @@ namespace MovieBooking
             Console.Clear();
         }
 
+        //Method to Close Environment
         static void Exit()
         {
             Environment.Exit(0);

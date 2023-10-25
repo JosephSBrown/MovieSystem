@@ -2,6 +2,7 @@
 {
     class Movie : IMovie
     {
+        //Movie Object
         public string Title { get; set; }
         public int AgeRating { get; set; }
         public int AudienceRating { get; set; }
